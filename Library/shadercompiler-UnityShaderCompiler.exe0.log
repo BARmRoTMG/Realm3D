@@ -1,0 +1,4 @@
+Base path: 'C:/Users/barba/OneDrive/Documents/GitHub/2019.3.5f1/Editor/Data', plugins path 'C:/Users/barba/OneDrive/Documents/GitHub/2019.3.5f1/Editor/Data/PlaybackEngines'
+Cmd: initializeCompiler
+Cmd: preprocess
+  insize=6592 outsize=705 ok=1
