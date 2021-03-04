@@ -4,13 +4,17 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     public GameObject player;
+    public Camera _camera;
 
     public float speed = 12f;
     public float walk = 12f;
     public float sprint = 20f;
     public float gravity = -19.62f;
     public float jumpHeight = 3f;
-    private bool isgolai = false;
+
+    private float target_height = 1.8f;
+    private float previous_y = 0;
+    private bool is_crouching = false;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -19,6 +23,11 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
 
     bool isGrounded;
+
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
 
     void Update()
     {
@@ -49,15 +58,27 @@ public class PlayerController : MonoBehaviour
             speed = walk;
         }
 
-        if (Input.GetKey(KeyCode.C))
-        {
+        /* previous_y = controller.transform.position.y - controller.height / 2 - controller.skinWidth;
 
-        }
-        else
-        {
+         if (Input.GetKeyDown("c"))
+         {
+             if (is_crouching == false)
+             {
+                 is_crouching = true;
+                 target_height = 0.9f;
+             }
+             else
+             {
+                 is_crouching = false;
+                 target_height = 1.8f;
+             }
+         }
+         controller.height = Mathf.Lerp(controller.height, target_height, 5f * Time.deltaTime);
 
-        }
+         _camera.transform.position = Vector3.Lerp(_camera.transform.position, new Vector3(_camera.transform.position.x, controller.transform.position.y + target_height / 2 - 0.1f, _camera.transform.position.z), 5f * Time.deltaTime);
 
+         controller.transform.position = Vector3.Lerp(controller.transform.position, new Vector3(controller.transform.position.x, previous_y + target_height / 2 + controller.skinWidth, controller.transform.position.z), 5f * Time.deltaTime);
+         */
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
